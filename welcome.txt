@@ -1,0 +1,9 @@
+---------------------------------------------------------------------------------
+Welcome to the Ursa Major Chat Room
+
+please Log in or register with the following commands:
+
+login username password
+register desired_username password
+--------------------------------------------------------------------------------
+
