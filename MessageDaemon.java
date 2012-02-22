@@ -7,7 +7,6 @@ import java.util.*;
  *
  * Holds the messages object which holds all of the public messages
  * Holds the chats object which holds all of the ChatConnections objects
- *
  */
 public class MessageDaemon extends Thread {
     public ArrayList<String> messages;
@@ -20,6 +19,7 @@ public class MessageDaemon extends Thread {
         chats = new ArrayList<ChatConnection>(MAXCLIENTS);
     }
     
+    // Returns a list of users logged in to the chat room. 
     public String who() {
         String wholist = "";
         for (ChatConnection cc : chats) {
@@ -29,10 +29,13 @@ public class MessageDaemon extends Thread {
         //wholist = wholist.substring(0,wholist.length()-2);
         return wholist;
     }
+
+    // Add a ChatConnection to the chats list.
     public void addChat(ChatConnection cc) {
         chats.add(cc);
     }
 
+    // Remove a ChatConnection from chats list.
     public void removeChat(ChatConnection cc) {
         // remove the ChatConnection, they have called logout
         chats.remove(cc);
@@ -71,6 +74,7 @@ public class MessageDaemon extends Thread {
         }
     }
     
+    // Add a message to the public messages queue.
     public void addMsg(String msg) {
         //ChatConnection cc = Chats.get(cid);
 

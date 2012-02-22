@@ -5,6 +5,12 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+/**
+ * ChatClient - GUI client and also a nested class which holds client socket.
+ *
+ * ChatClientConnection object encapsulates the client socket connection
+ * and the chat loop. 
+ */
 public class ChatClient extends JPanel implements ActionListener {
     private final static int port = 1337;
     private final static String host = "localhost";
@@ -72,6 +78,7 @@ public class ChatClient extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
     }
 
+    // Creates the Frame and shows it.
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Chat Room of the Geeks!");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,6 +91,8 @@ public class ChatClient extends JPanel implements ActionListener {
         textField.requestFocus();
     }
     
+    // Main creates the GUI in the separate AWT Event Dispatch Thread
+    //  then it creates the client socket in the main thread.
     public static void main(String[] args) {
         outMsg = new LinkedList<String>();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -134,6 +143,8 @@ public class ChatClient extends JPanel implements ActionListener {
                         byte[] buf = new byte[ inputStream.available() ];
                         inputStream.read( buf );
                         received = new String(buf);
+                        // when we receive a new string append it to textArea
+                        // call invokeLater in the separate AWT Event Dispatch thread
                         javax.swing.SwingUtilities.invokeLater(new Runnable() {
                                 public void run() {
                                     synchronized (outMsg) {

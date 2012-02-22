@@ -3,6 +3,14 @@ import java.net.*;
 import java.util.*;
 import java.sql.*;
 
+/** 
+ * ChatServer - main server class
+ *
+ * - Starts up DBConnection, which reads in chat accounts from database and 
+ *     authenticates log ins, and registers new accounts.
+ * - Starts up MessageDaemon, which routes messages between clients.
+ * - Listens for connections and hands off their socket to new ChatConnection.
+ */
 public class ChatServer {
     private static ServerSocket serverSocket;
     private static final int PORT = 1337;
@@ -14,6 +22,18 @@ public class ChatServer {
         clients = 0;
         // Connection with account Table in chatserver Database
         // now using sqlite, so no need for dbuser and dbuser password
+
+        /** Mysql stuff
+         * Use command line arguments for database connection.
+         * if(args.length > 1) {
+         *   dbuser = args[0];
+         *   dbpass = args[1];
+         * }
+        
+         * // Connection with account Table in chatserver Database
+         * db = new DBConnection(dbuser,dbpass);
+         */
+ 
         db = new DBConnection();
         try {
             serverSocket = new ServerSocket(PORT);
