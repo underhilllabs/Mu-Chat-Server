@@ -1,0 +1,12 @@
+# To compile the ChatServer use:
+javac -cp ./sqlitejdbc-v056.jar:. ChatServer.java
+
+# To run Chat Server 
+java -cp ./sqlitejdbc-v056.jar:. ChatServer
+
+# To compile and run Chat Client
+javac ChatClient.java
+java ChatClient
+
+
+
