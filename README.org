@@ -1,0 +1,12 @@
+* Major Ursa Chat Server
+
+** Chat Server written in java 
++ Uses mysql or sqlite to create and authenticate 
++ Includes chat client written in java
++ Includes an emacs chat client 
+
+** To compile the Chat Server with mysql backend
+   javac -cp ./sqlitejdbc-v056.jar:. ChatServer.java
+
+** To run the Chat Server
+   java -cp ./sqlitejdbc-v056.jar:. ChatServer
